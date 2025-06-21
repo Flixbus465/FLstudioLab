@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLstudioLab</title>
+  <link rel="stylesheet" href="style/dark.css">
+</head>
+<body>
+  <div class="app-container">
+    <aside class="sidebar">
+      <div class="logo">FLstudioLab</div>
+      <nav>
+        <a href="#messenger" class="active" id="nav-messenger">Messenger</a>
+        <a href="#files" id="nav-files">Dateien</a>
+        <a href="#linkshare" id="nav-linkshare">Link-Share</a>
+        <a href="#support" id="nav-support">Support</a>
+        <a href="#settings" id="nav-settings">Einstellungen</a>
+      </nav>
+      <div class="bottom">
+        <span id="user-info">Angemeldet als ...</span>
+        <br>
+        <button class="btn btn-danger" id="logout-btn" style="margin-top:12px;width:100%">Logout</button>
+      </div>
+    </aside>
+    <main class="main card" style="box-shadow:none;">
+      <div id="tab-messenger" class="tab-content">
+        <h2>Messenger</h2>
+        <div id="messenger-view"></div>
+      </div>
+      <div id="tab-files" class="tab-content" style="display:none">
+        <h2>Dateiverwaltung</h2>
+        <div id="files-view"></div>
+      </div>
+      <div id="tab-linkshare" class="tab-content" style="display:none">
+        <h2>Link-Share</h2>
+        <div id="linkshare-view"></div>
+      </div>
+      <div id="tab-support" class="tab-content" style="display:none">
+        <h2>Support</h2>
+        <div id="support-view"></div>
+      </div>
+      <div id="tab-settings" class="tab-content" style="display:none">
+        <h2>Einstellungen</h2>
+        <div id="settings-view"></div>
+      </div>
+    </main>
+  </div>
+  <script src="js/logic.js"></script>
+  <script>
+    // Sidebar-Navigation
+    const navs = ["messenger","files","linkshare","support","settings"];
+    navs.forEach(tab => {
+      document.getElementById('nav-'+tab).onclick = function(e) {
+        e.preventDefault();
+        navs.forEach(t => {
+          document.getElementById('nav-'+t).classList.remove('active');
+          document.getElementById('tab-'+t).style.display = 'none';
+        });
+        this.classList.add('active');
+        document.getElementById('tab-'+tab).style.display = 'block';
+        window.location.hash = tab;
+      };
+    });
+    // Hash-Routing (Seite neu laden)
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash.replace('#','');
+      if(navs.includes(hash)) {
+        document.getElementById('nav-'+hash).click();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLstudioLab – Login & Registrierung</title>
+  <link rel="stylesheet" href="style/dark.css">
+  <style>
+    .login-container { max-width: 400px; margin: 80px auto; background: var(--bg-alt); border-radius: var(--radius); box-shadow: var(--shadow); padding: 36px 32px; }
+    .tabs { margin-bottom: 32px; display: flex; }
+    .tab { flex: 1; text-align: center; cursor: pointer; padding: 14px 0; font-size: 1.1rem; border-bottom: 2px solid transparent; color: var(--text-muted); transition: color .15s, border-color .15s; background: var(--bg-alt); border-radius: var(--radius) var(--radius) 0 0; }
+    .tab.active { color: var(--accent); border-bottom: 2px solid var(--accent); background: var(--bg); }
+    .error { color: var(--danger); margin-bottom: 12px; }
+    .captcha-img { display: block; margin: 12px 0; }
+    .qr-preview { display: block; margin: 16px auto; max-width: 180px; }
+    input, button { width: 100%; margin-bottom: 12px; }
+    button { margin-bottom: 0; }
+  </style>
+</head>
+<body>
+  <div class="login-container card">
+    <div class="tabs">
+      <div class="tab active" id="tab-login">Login</div>
+      <div class="tab" id="tab-register">Registrieren</div>
+    </div>
+    <form id="login-form" autocomplete="off">
+      <div class="error" id="login-error" style="display:none"></div>
+      <input type="text" id="login-username" placeholder="Nutzername" required autofocus>
+      <input type="password" id="login-password" placeholder="Passwort (min. 32 Zeichen)" minlength="32" required>
+      <div id="login-2fa" style="display:none">
+        <input type="text" id="login-2fa-code" placeholder="2FA-Code (6-stellig)">
+      </div>
+      <div id="login-captcha" style="display:none">
+        <img src="/static/captcha.png" alt="Captcha" class="captcha-img">
+        <input type="text" id="login-captcha-input" placeholder="Captcha eingeben">
+      </div>
+      <button type="submit" class="btn">Login</button>
+    </form>
+    <form id="register-form" style="display:none" autocomplete="off">
+      <div class="error" id="register-error" style="display:none"></div>
+      <input type="text" id="register-username" placeholder="Nutzername" required>
+      <input type="password" id="register-password" placeholder="Passwort (min. 32 Zeichen)" minlength="32" required>
+      <label style="display:flex;align-items:center;margin-bottom:16px;gap:8px;">
+        <input type="checkbox" id="register-2fa"> 2FA aktivieren
+      </label>
+      <div id="register-qr" style="display:none">
+        <img id="register-qr-img" class="qr-preview" src="" alt="QR-Code für 2FA">
+        <div style="text-align:center;color:var(--text-muted);font-size:0.97rem;">Scanne den QR-Code mit deiner Authenticator-App</div>
+      </div>
+      <button type="submit" class="btn">Registrieren</button>
+    </form>
+  </div>
+  <script src="js/logic.js"></script>
+  <script>
+    // Tab-Switching
+    const tabLogin = document.getElementById('tab-login');
+    const tabRegister = document.getElementById('tab-register');
+    const loginForm = document.getElementById('login-form');
+    const registerForm = document.getElementById('register-form');
+    tabLogin.onclick = () => { tabLogin.classList.add('active'); tabRegister.classList.remove('active'); loginForm.style.display='block'; registerForm.style.display='none'; };
+    tabRegister.onclick = () => { tabRegister.classList.add('active'); tabLogin.classList.remove('active'); loginForm.style.display='none'; registerForm.style.display='block'; };
+  </script>
+</body>
+</html>

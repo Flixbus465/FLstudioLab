@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+bcrypt
+pydantic
+pyotp
+qrcode[pil]
+cryptography 

@@ -1,0 +1,22 @@
+<div class="card" style="max-width:600px;margin:auto;">
+  <h3>Einstellungen</h3>
+  <form id="settings-form" autocomplete="off">
+    <div style="margin-bottom:18px;">
+      <label style="display:flex;align-items:center;gap:8px;">
+        <input type="checkbox" id="settings-2fa"> 2FA aktivieren
+      </label>
+      <div id="settings-qr" style="display:none;margin-top:12px;">
+        <img id="settings-qr-img" src="" alt="QR-Code für 2FA" style="max-width:160px;display:block;margin:auto;">
+        <div style="text-align:center;color:var(--text-muted);font-size:0.97rem;">Scanne den QR-Code mit deiner Authenticator-App</div>
+      </div>
+    </div>
+    <div style="margin-bottom:18px;">
+      <input type="password" id="settings-password" placeholder="Neues Passwort (min. 32 Zeichen)" minlength="32">
+      <button type="button" class="btn" id="settings-password-btn">Passwort ändern</button>
+    </div>
+    <div style="margin-bottom:18px;">
+      <button type="button" class="btn btn-danger" id="emergency-btn">Emergency: Account & Daten löschen</button>
+    </div>
+  </form>
+  <div id="settings-status"></div>
+</div>

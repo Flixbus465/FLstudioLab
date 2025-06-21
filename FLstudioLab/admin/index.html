@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLstudioLab Admin</title>
+  <link rel="stylesheet" href="../client/style/dark.css">
+  <style>
+    .admin-container { max-width: 1100px; margin: 40px auto; background: var(--bg-alt); border-radius: var(--radius); box-shadow: var(--shadow); padding: 36px 32px; }
+    .admin-tabs { display: flex; gap: 16px; margin-bottom: 24px; }
+    .admin-tab { cursor: pointer; color: var(--text-muted); padding: 10px 18px; border-radius: var(--radius); transition: background .15s, color .15s; }
+    .admin-tab.active, .admin-tab:hover { background: var(--bg); color: var(--accent); }
+    .admin-section { display: none; }
+    .admin-section.active { display: block; }
+    .admin-login { max-width: 340px; margin: 80px auto; background: var(--bg-alt); border-radius: var(--radius); box-shadow: var(--shadow); padding: 36px 32px; }
+    .error { color: var(--danger); margin-bottom: 12px; }
+    table { background: var(--bg-alt); border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid var(--border); }
+    th, td { padding: 10px 8px; border-bottom: 1px solid var(--border); }
+    th { color: var(--text-muted); font-weight: 500; background: var(--bg); }
+    tr:last-child td { border-bottom: none; }
+    input[type="number"] { width: 80px; }
+  </style>
+</head>
+<body>
+  <div id="admin-login" class="admin-login card">
+    <h2>Admin-Login</h2>
+    <div class="error" id="admin-login-error" style="display:none"></div>
+    <input type="text" id="admin-username" placeholder="Admin-Name" autofocus>
+    <input type="password" id="admin-password" placeholder="Passwort">
+    <button class="btn" id="admin-login-btn" style="width:100%;margin-top:12px;">Login</button>
+  </div>
+  <div id="admin-dashboard" class="admin-container card" style="display:none;">
+    <h2>Admin-Konsole</h2>
+    <div class="admin-tabs">
+      <div class="admin-tab active" data-tab="users">Nutzer</div>
+      <div class="admin-tab" data-tab="support">Support</div>
+      <div class="admin-tab" data-tab="logs">Logs</div>
+      <div class="admin-tab" data-tab="public">Öffentliche Dateien</div>
+      <div class="admin-tab" data-tab="storage">Speicherplatz</div>
+    </div>
+    <div id="admin-section-users" class="admin-section active"></div>
+    <div id="admin-section-support" class="admin-section"></div>
+    <div id="admin-section-logs" class="admin-section"></div>
+    <div id="admin-section-public" class="admin-section"></div>
+    <div id="admin-section-storage" class="admin-section"></div>
+    <button class="btn btn-danger" id="admin-logout-btn" style="margin-top:32px;">Logout</button>
+  </div>
+  <script src="admin.js"></script>
+</body>
+</html>

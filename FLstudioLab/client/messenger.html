@@ -1,0 +1,17 @@
+<div class="card" style="max-width:900px;margin:auto;display:flex;gap:32px;">
+  <aside style="width:220px;">
+    <h3 style="margin-bottom:12px;">Chats</h3>
+    <div id="chat-list">Lade Kontakte ...</div>
+  </aside>
+  <section style="flex:1;display:flex;flex-direction:column;">
+    <div id="chat-header" style="margin-bottom:8px;"></div>
+    <div id="chat-messages" style="flex:1;min-height:320px;max-height:400px;overflow-y:auto;background:var(--bg-alt);border-radius:var(--radius);padding:16px 12px 12px 12px;margin-bottom:12px;"></div>
+    <form id="chat-form" style="display:flex;gap:8px;">
+      <input type="text" id="chat-input" placeholder="Nachricht eingeben ..." style="flex:1;">
+      <button type="submit" class="btn">Senden</button>
+      <label style="display:flex;align-items:center;gap:4px;font-size:0.97rem;">
+        <input type="checkbox" id="ephemeral-mode"> Flüchtig
+      </label>
+    </form>
+  </section>
+</div>

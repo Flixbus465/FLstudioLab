@@ -1,0 +1,182 @@
+/* FLstudioLab Darkmode Stylesheet */
+:root {
+  --bg: #181a20;
+  --bg-alt: #23262f;
+  --sidebar: #20232a;
+  --accent: #4f8cff;
+  --accent-hover: #3574e6;
+  --text: #e6e6e6;
+  --text-muted: #b0b0b0;
+  --danger: #ff4f4f;
+  --success: #4fff8c;
+  --border: #2c2f36;
+  --input-bg: #23262f;
+  --input-border: #353945;
+  --shadow: 0 2px 8px rgba(0,0,0,0.25);
+  --radius: 8px;
+  --transition: 0.15s;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#app, .app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar {
+  background: var(--sidebar);
+  width: 240px;
+  min-width: 200px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+  border-right: 1px solid var(--border);
+}
+
+.sidebar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--accent);
+  padding: 32px 24px 24px 24px;
+  letter-spacing: 1px;
+}
+
+.sidebar nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar nav a {
+  color: var(--text);
+  text-decoration: none;
+  padding: 16px 24px;
+  border-left: 4px solid transparent;
+  transition: background var(--transition), border-color var(--transition);
+  font-size: 1.08rem;
+}
+
+.sidebar nav a.active, .sidebar nav a:hover {
+  background: var(--bg-alt);
+  border-left: 4px solid var(--accent);
+  color: var(--accent);
+}
+
+.sidebar .bottom {
+  padding: 24px;
+  border-top: 1px solid var(--border);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.main {
+  flex: 1;
+  padding: 40px 32px;
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, h4 {
+  color: var(--text);
+  margin-top: 0;
+}
+
+input, textarea, select {
+  background: var(--input-bg);
+  color: var(--text);
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  font-size: 1rem;
+  margin-bottom: 16px;
+  transition: border-color var(--transition);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+button, .btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  padding: 10px 22px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--transition), box-shadow var(--transition);
+  box-shadow: var(--shadow);
+  margin-right: 8px;
+}
+
+button:hover, .btn:hover {
+  background: var(--accent-hover);
+}
+
+.btn-danger {
+  background: var(--danger);
+}
+
+.btn-success {
+  background: var(--success);
+  color: #181a20;
+}
+
+.card {
+  background: var(--bg-alt);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  margin-bottom: 24px;
+  border: 1px solid var(--border);
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+
+.tab {
+  padding: 12px 24px;
+  cursor: pointer;
+  color: var(--text-muted);
+  border-bottom: 2px solid transparent;
+  transition: color var(--transition), border-color var(--transition);
+  font-size: 1.08rem;
+}
+
+.tab.active {
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: var(--bg-alt);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+@media (max-width: 900px) {
+  .sidebar { width: 60px; min-width: 60px; }
+  .sidebar .logo { font-size: 1.1rem; padding: 20px 8px; }
+  .sidebar nav a { padding: 12px 8px; font-size: 0.95rem; }
+  .main { padding: 20px 8px; }
+}
